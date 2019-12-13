@@ -1,0 +1,237 @@
+
+<html>
+<head>
+  <meta charset="utf8">
+  <title>input-cache sample</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="sample.css">
+
+  <script src="../src/input_cache.js"></script>
+  <script>
+    new $$input_cache({
+      inputs : [
+        {
+          type : "index",
+          name : "店舗",
+          selector : "form[name='form1'] input[data-name='shop_name']"
+        },
+        {
+          view : "hidden",
+          selector : "form[name='form1'] input[data-name='shop_code']"
+        },
+
+        {
+          type : "index",
+          name : "会社",
+          selector : "form[name='form1'] input[data-name='company_name']"
+        },
+        {
+          view : "hidden",
+          selector : "form[name='form1'] input[data-name='company_code']"
+        },
+        {
+          name : "費目",
+          selector : "form[name='form1'] input[data-name='kamoku_name']"
+        },
+        {
+          view : "hidden",
+          selector : "form[name='form1'] input[data-name='kamoku_code']"
+        },
+        {
+          name : "内容",
+          selector : "form[name='form1'] input[data-name='comment']"
+        },
+        {
+          name : "備考",
+          selector : "form[name='form1'] textarea[data-name='memo']"
+        }
+      ],
+      max_cache : 5,
+      matchType : "full"
+    });
+
+    // new $$input_cache({
+    //   inputs : [
+    //     {
+    //       selector : "form[name='form1'] input[data-name='total']"
+    //     },
+    //     {
+    //       selector : "form[name='form1'] input[data-name='tax']"
+    //     },
+    //     {
+    //       selector : "form[name='form1'] input[data-name='impost']"
+    //     }
+    //   ],
+    //   max_cache : 3
+    // });
+  </script>
+</head>
+<body>
+  <div class="input">
+  <form method="post" name="form1">
+    <input type="hidden" name="php" value="\mynt\service\d_accounting::postData('1','2')">
+    <!-- <input type="hidden" name="redirect" value="?p=d_accounting_input&groups_code=2&y=2019&m=12" /> -->
+    <input type="hidden" name="redirect" value="?p=d_accounting&amp;groups_code=2&amp;y=2019&amp;m=12">
+    <input type="hidden" name="id" value="">
+    <input type="hidden" name="mode" value="">
+
+
+    <p class="subtitle">購入日</p>
+
+    <div class="input-group">
+      <p class="input-group-addon"><svg viewBox="0 0 512 512">
+  <path d="M260.847,51.057C210.844,88.23,92.606,195.549,3.954,195.549c-5.836,0-3.486,4.232-3.486,4.232l77.458,32.376
+    l-47.118,46.646v77.175l251.153,104.964L512,233.189v-77.168L260.847,51.057z M68.485,204.425
+    c26.6-9.94,53.389-24.653,79.054-41.188c6.421-4.135,12.738-8.416,18.994-12.73c1.375-0.951,2.741-1.886,4.103-2.846
+    c6.063-4.232,12.036-8.506,17.889-12.802c0.681-0.499,1.335-0.991,2.016-1.491c5.68-4.192,11.234-8.377,16.676-12.528
+    c0.734-0.565,1.467-1.113,2.193-1.677c6.01-4.612,11.843-9.142,17.502-13.592l204.576,85.503
+    c-53.933,41.067-123.229,87.479-176.38,87.479c-3.797,0-7.498-0.25-11.012-0.75l-127.332-53.208l-21.933-9.158L68.485,204.425z
+      M99.885,241.315L238.04,299.07c5.55,0.976,11.23,1.443,17.067,1.443c55.598,0,122.83-42.211,177.573-82.842L275.596,373.182
+    L58.384,282.415L99.885,241.315z M490.04,224.031L276.906,435.033l-224.138-93.67v-18.252l225.561,94.258L490.04,207.771V224.031z
+      M490.04,194.783L276.209,406.486l-223.44-93.372v-19.445l225.71,94.323L490.04,178.546V194.783z"></path>
+  <path d="M209.417,233.947c0.802,0.395,1.878,0.274,2.689-0.314l20.4-9.158c2.326-1.04,4.539-2.33,6.602-3.813
+    l65.672-47.532c0.806-0.589,0.81-1.242,0.008-1.644l-14.983-7.433c-0.939-0.468-2.012-0.678-3.217-0.612l-26.29,0.418
+    c-1.201,0.057-2.007,0.314-2.818,0.903l-16.7,12.085c-1.076,0.782-0.677,1.298,0.661,1.314l24.415-0.04l0.262,0.129l-46.065,33.344
+    l-26.68,12.746c-0.81,0.58-0.81,1.241-0.008,1.636L209.417,233.947z"></path>
+</svg></p>
+      <input type="text" name="data[0][date_ymd]" data-name="date_ymd" value="" placeholder="" autocomplete="off">
+      <input type="hidden" name="data[0][date_ymd_before]" data-name="date_ymd_before" value="">
+    </div>
+
+
+    <p class="subtitle">店舗、会社</p>
+
+    <div class="mobile-group mobile-group-2">
+
+      <div class="input-group">
+        <p class="input-group-addon">店舗</p>
+        <input type="hidden" name="data[0][shop_code]" data-name="shop_code" value="18" placeholder="" data-type-pulldown="key" data-flg-pulldown="MTU3NjExMzgzOTkxNV9bZGF0YS1uYW1lPSdzaG9wX25hbWUnXV8w">
+        <input type="text" name="data[0][shop_name]" data-name="shop_name" value="" placeholder="購入店舗" autocomplete="off" data-type-pulldown="val" data-flg-pulldown="MTU3NjExMzgzOTkxNV9bZGF0YS1uYW1lPSdzaG9wX25hbWUnXV8w" data-num="0">
+      </div>
+
+      <div class="input-group">
+        <p class="input-group-addon">会社</p>
+        <input type="hidden" name="data[0][company_code]" data-name="company_code" value="" data-type-pulldown="key" data-flg-pulldown="MTU3NjExMzgzOTk1Ml9bZGF0YS1uYW1lPSdjb21wYW55X25hbWUnXV8w">
+        <input type="text" name="data[0][company_name]" data-name="company_name" value="" placeholder="取引会社" autocomplete="off" data-type-pulldown="val" data-flg-pulldown="MTU3NjExMzgzOTk1Ml9bZGF0YS1uYW1lPSdjb21wYW55X25hbWUnXV8w" data-num="0">
+      </div>
+
+    </div>
+
+    <p class="subtitle">明細登録</p>
+
+    <div class="pay-groups">
+<!--{!{php:\mynt\service\common::viewTemplate("mynt/service/page/html/d_accounting_input.html")}!}-->
+      <div class="pay-group" data-count="">
+
+    <input type="hidden" name="data[0][code]" data-name="code" value="">
+    <input type="hidden" name="data[0][repeat_code]" data-name="repeat_code" value="">
+
+    <div class="input-group">
+      <p class="input-group-addon">費目</p>
+      <input type="hidden" name="data[0][kamoku_code]" data-name="kamoku_code" value="" placeholder="" data-type-pulldown="key" data-flg-pulldown="MTU3NjExMzgzOTk1Nl9bZGF0YS1uYW1lPSdrYW1va3VfbmFtZSddXzA=">
+      <input type="text" name="data[0][kamoku_name]" data-name="kamoku_name" value="" placeholder="費目" autocomplete="off" data-type-pulldown="val" data-flg-pulldown="MTU3NjExMzgzOTk1Nl9bZGF0YS1uYW1lPSdrYW1va3VfbmFtZSddXzA=" data-num="0">
+    </div>
+
+    <div class="input-group">
+      <p class="input-group-addon"><svg style="width:20px;height:20px;" viewBox="-15 -15 484.00019 484">
+<path d="m401.648438 18.234375c-24.394532-24.351563-63.898438-24.351563-88.292969 0l-22.101563 22.222656-235.269531 235.144531-.5.503907c-.121094.121093-.121094.25-.25.25-.25.375-.625.746093-.871094 1.121093 0 .125-.128906.125-.128906.25-.25.375-.371094.625-.625 1-.121094.125-.121094.246094-.246094.375-.125.375-.25.625-.378906 1 0 .121094-.121094.121094-.121094.25l-52.199219 156.96875c-1.53125 4.46875-.367187 9.417969 2.996094 12.734376 2.363282 2.332031 5.550782 3.636718 8.867188 3.625 1.355468-.023438 2.699218-.234376 3.996094-.625l156.847656-52.324219c.121094 0 .121094 0 .25-.121094.394531-.117187.773437-.285156 1.121094-.503906.097656-.011719.183593-.054688.253906-.121094.371094-.25.871094-.503906 1.246094-.753906.371093-.246094.75-.621094 1.125-.871094.125-.128906.246093-.128906.246093-.25.128907-.125.378907-.246094.503907-.5l257.371093-257.371094c24.351563-24.394531 24.351563-63.898437 0-88.289062zm-232.273438 353.148437-86.914062-86.910156 217.535156-217.535156 86.914062 86.910156zm-99.15625-63.808593 75.929688 75.925781-114.015626 37.960938zm347.664062-184.820313-13.238281 13.363282-86.917969-86.917969 13.367188-13.359375c14.621094-14.609375 38.320312-14.609375 52.945312 0l33.964844 33.964844c14.511719 14.6875 14.457032 38.332031-.121094 52.949218zm0 0"></path>
+</svg></p>
+      <input class="form-control" type="text" name="data[0][comment]" data-name="comment" value="" placeholder="内容" autocomplete="off">
+    </div>
+    
+
+    <div class="mobile-group mobile-group-2">
+
+      <div class="input-group">
+        <p class="input-group-addon">税込</p>
+        <input type="text" name="data[0][total]" data-name="total" value="" placeholder="合計金額" data-mode="digit" data-type="calc" autocomplete="off" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+
+      <div class="input-group">
+        <p class="input-group-addon">税抜</p>
+        <input type="text" name="data[0][subtotal]" data-name="subtotal" value="" placeholder="税抜額" data-mode="digit" autocomplete="off" readonly="" style="background-color:#eee;" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+    </div>
+
+    <div class="mobile-group mobile-group-2">
+      <div class="input-group">
+        <p class="input-group-addon">税率</p>
+        <!-- <input type="hidden" name="data[][tax_code]" data-name="tax"  /> -->
+        <input type="text" name="data[0][tax]" data-name="tax" value="" placeholder="税率" data-mode="digit" autocomplete="off" data-type-pulldown="val" data-flg-pulldown="MTU3NjExMzgzOTk1N19bZGF0YS1uYW1lPSd0YXgnXV8w" data-num="0" readonly="" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">%</span>
+      </div>
+
+
+      <div class="input-group">
+        <p class="input-group-addon">税額</p>
+        <input type="text" name="data[0][impost]" data-name="impost" value="" placeholder="税額" data-mode="digit" autocomplete="off" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+    </div>
+
+
+    <p class="button-details">
+      <svg viewBox="0 -1 401.52289 401">
+<path d="m370.589844 250.972656c-5.523438 0-10 4.476563-10 10v88.789063c-.019532 16.5625-13.4375 29.984375-30 30h-280.589844c-16.5625-.015625-29.980469-13.4375-30-30v-260.589844c.019531-16.558594 13.4375-29.980469 30-30h88.789062c5.523438 0 10-4.476563 10-10 0-5.519531-4.476562-10-10-10h-88.789062c-27.601562.03125-49.96875 22.398437-50 50v260.59375c.03125 27.601563 22.398438 49.96875 50 50h280.589844c27.601562-.03125 49.96875-22.398437 50-50v-88.792969c0-5.523437-4.476563-10-10-10zm0 0"></path>
+<path d="m376.628906 13.441406c-17.574218-17.574218-46.066406-17.574218-63.640625 0l-178.40625 178.40625c-1.222656 1.222656-2.105469 2.738282-2.566406 4.402344l-23.460937 84.699219c-.964844 3.472656.015624 7.191406 2.5625 9.742187 2.550781 2.546875 6.269531 3.527344 9.742187 2.566406l84.699219-23.464843c1.664062-.460938 3.179687-1.34375 4.402344-2.566407l178.402343-178.410156c17.546875-17.585937 17.546875-46.054687 0-63.640625zm-220.257812 184.90625 146.011718-146.015625 47.089844 47.089844-146.015625 146.015625zm-9.40625 18.875 37.621094 37.625-52.039063 14.417969zm227.257812-142.546875-10.605468 10.605469-47.09375-47.09375 10.609374-10.605469c9.761719-9.761719 25.589844-9.761719 35.351563 0l11.738281 11.734375c9.746094 9.773438 9.746094 25.589844 0 35.359375zm0 0"></path>
+</svg>
+      詳細
+    </p>
+
+    <div class="row-group sub-input details" data-view="0">
+      <div class="input-group">
+        <p class="input-group-addon">単価</p>
+        <input type="text" name="data[0][price]" data-name="price" value="" placeholder="単価" data-mode="digit" data-type="calc" autocomplete="off" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+
+      <div class="input-group">
+        <p class="input-group-addon">個数</p>
+        <input type="text" name="data[0][count]" data-name="count" value="1" placeholder="個数" data-mode="digit" autocomplete="off" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">個</span>
+      </div>
+
+      <div class="input-group">
+        <p class="input-group-addon">調整</p>
+        <input type="text" name="data[0][adjust]" data-name="adjust" value="" placeholder="調整" data-mode="digit" data-type="calc" autocomplete="off" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+
+      <div class="input-group">
+        <p class="input-group-addon">源泉</p>
+        <input type="text" name="data[0][holding_tax]" data-name="holding_tax" value="" placeholder="源泉所得税" data-mode="digit" data-type="calc" autocomplete="off" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon">支払</span>
+        <input class="readonly" type="text" name="data[0][pay]" data-name="pay" value="" placeholder="支払い額" data-mode="digit" data-type="calc" disabled="" data-flg-3digitseparator-blur="1" data-flg-3digitseparator-hook="1">
+        <span class="input-group-addon">円</span>
+      </div>
+    </div>
+
+  </div></div>
+
+
+    <p class="subtitle">メモ</p>
+
+    <div class="input-group type-textarea">
+      <p class="input-group-addon" style="vertical-align:middle;"><!--<svg src="mynt/service/page/img/comment.svg"></svg>-->備考</p>
+      <textarea type="text" name="data[0][memo]" data-name="memo" value="" placeholder="" autocomplete="off"></textarea>
+    </div>
+
+    <div class="form-line bottom-buttons">
+      <div class="form buttons">
+        <button type="button" class="button-repeat" style="display: none;">REPEAT</button>
+        <!-- <button type="button" class="button-copy">複製</button> -->
+        <button type="button" class="button-delete" style="display: none;">削除</button>
+        <button type="button" class="button-submit">登録</button>
+      </div>
+    </div>
+      
+  </form>
+</div>
+</body>
+</html>

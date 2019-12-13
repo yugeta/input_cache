@@ -1,0 +1,31 @@
+店舗=セリア -> 課目:消耗品 , 内容:お茶菓子
+店舗=セリア -> 課目:事務用品 , 内容:トレー
+店舗=電車   -> 費目:旅費交通費 , 内容:電車移動
+
+localStorage {
+  cache : %一次的なデータを格納（ページ読み込み時に保持データに移行されて、クリアされる）
+  {
+    %id : {
+      %inputsデータ
+    }
+  }
+  data : %保持データを格納
+  {
+    %selector-index : 
+    [
+      %selector-index2 : 
+      [
+        {%json-data}
+      ]
+    ]
+  }
+}
+
+json-data
+
+elm-selector : inputs-data
+elm-value : blur-value
+time : date-time-micro.seconds
+
+
+
