@@ -460,7 +460,7 @@
     // element初期設定
     this.setElement(this.options);
 
-    // cacheデータ初期設定
+    // cacheデータ初期設定）
     this.cache_migration();
   };
 
@@ -628,27 +628,21 @@
     var ls_data = this.cache_load("data");
     ls_data = (ls_data) ? ls_data : [];
 
-    // var flg = false;
-    var elements = this.getCache_notEmpty();
+    var elements = this.options.inputs;
     for(var i=0; i<ls_data.length; i++){
       var cnt = 0;
       for(var j=0; j<elements.length; j++){
-        if(ls_data[i].data[elements[j].selector] !== elements[j].value){continue;}
-        cnt++;
+        if(ls_data[i].data[elements[j].selector] === ls_cache.data[elements[j].selector]){cnt++;}
       }
       // 全ての項目で同じ入力値
       if(cnt === elements.length){
-        // flg = true;
         ls_cache.count = ls_data[i].count;
         ls_cache.id    = ls_data[i].id;
         ls_data.splice(i,1);
         break;
       }
     }
-// console.log(cnt +"/"+ elements.length);
-// console.log(ls_cache);
     ls_cache.count = (typeof ls_cache.count === "undefined") ? 1 : ls_cache.count+1;
-    
     
     ls_data = this.cache_max(ls_data);
     ls_data.push(ls_cache);
@@ -681,7 +675,7 @@
 
   MAIN.prototype.cache_max = function(datas){
     if(!datas){return null}
-    if(datas.length > this.options.max_cache){
+    if(datas.length-1 > this.options.max_cache){
       datas.sort(function(a,b){
         a.count = (typeof a.count === "undefined") ? 1 : a.count;
         b.count = (typeof b.count === "undefined") ? 1 : b.count;
