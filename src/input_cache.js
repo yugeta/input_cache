@@ -7,6 +7,7 @@
     max_cache : 100,    // cache登録の最大件数
     eventMode : "blur", // 入力項目の発動イベント種類 [ "blur" , "keyup" ]
 
+    history_count : 5,  // Historyの表示件数 (default : 5)
     matchType : "fromt-match", // ["fromt-match"(前方一致)*default , "full"(全部一致 or blank)]
     wait      : 500,     // 別システム連動の為の発動を遅らせるwait値（仮）
 
@@ -462,6 +463,7 @@
 
     // cacheデータ初期設定）
     this.cache_migration();
+
   };
 
   MAIN.prototype.getTemplate = function(){
@@ -473,7 +475,10 @@
           console.log("Error : input_cache : not-template-file. ("+ this.options.module.dir+"lists.html" +")");
           return;
         }
-        this.options.template = res
+        this.options.template = res;
+
+        // History機能
+        this.history();
       }).bind(this)
     });
   };
@@ -628,11 +633,21 @@
     var ls_data = this.cache_load("data");
     ls_data = (ls_data) ? ls_data : [];
 
+    
     var elements = this.options.inputs;
+
+    // 入力が全て空の時はマイグレーション処理ナシ
+    var empty = 0;
+    for(var j=0; j<elements.length; j++){
+      if(ls_cache.data[elements[j].selector] === ""){empty++;}
+    }
+    if(empty === elements.length){return;}
+
     for(var i=0; i<ls_data.length; i++){
       var cnt = 0;
       for(var j=0; j<elements.length; j++){
         if(ls_data[i].data[elements[j].selector] === ls_cache.data[elements[j].selector]){cnt++;}
+        
       }
       // 全ての項目で同じ入力値
       if(cnt === elements.length){
@@ -843,6 +858,32 @@
       var lists = document.querySelectorAll(".input-cache-base .input-cache-lists li");
       cnt.textContent = lists.length;
     }
+  };
+
+  // ページ読み込み直後に直近入力リストを表示
+  MAIN.prototype.history = function(){
+    // 直近リストを取得
+    var datas = this.cache_history();
+    if(!datas || !datas.length){return;}
+console.log(datas);
+    this.viewLists(datas);
+  };
+  MAIN.prototype.cache_history = function(){
+    // キャッシュデータを取得
+    var datas = this.cache_load("data");
+    if(!datas || !datas.length){return null;}
+
+// console.log(this.options.history_count);
+// console.log(datas);
+// console.log(datas.splice(0,this.options.history_count));
+
+    // time順にsort
+    // datas.sort(function(a,b){
+    //   if(a.time < b.time){return -1}
+    //   if(a.time > b.time){return 1}
+    //   return 0;
+    // });
+    return datas.splice(0,this.options.history_count);
   };
 
   return MAIN;

@@ -18,6 +18,7 @@ README
 - ver 0.1 : 拡縮機能、同値リスト表示、キャッシュ削除、入力値判定
 - ver 0.2 : 回数登録機能、低回数キャッシュ優先削除機能
 - ver 0.3 : 仕様変更 : templateリストを外部型から内包型に変更
+- ver 0.4 : History機能
 
 # Setting
 - 保存対象項目 : 値を保存する対象項目
@@ -33,6 +34,7 @@ README
 
 # Request
 - localStorageの平文データを暗号化処理
+- ページ読み込み直後に、直近の入力を数件表示したい（History機能）
 
 # Introduction
 - Name : Yugeta.Koji

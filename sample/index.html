@@ -46,8 +46,9 @@
           selector : "form[name='form1'] textarea[data-name='memo']"
         }
       ],
-      max_cache : 5,
-      matchType : "full"
+      max_cache : 20,
+      matchType : "full",
+      history_count : 10
     });
 
     // new $$input_cache({
@@ -105,7 +106,7 @@
 
       <div class="input-group">
         <p class="input-group-addon">店舗</p>
-        <input type="hidden" name="data[0][shop_code]" data-name="shop_code" value="18" placeholder="" data-type-pulldown="key" data-flg-pulldown="MTU3NjExMzgzOTkxNV9bZGF0YS1uYW1lPSdzaG9wX25hbWUnXV8w">
+        <input type="hidden" name="data[0][shop_code]" data-name="shop_code" value="" placeholder="" data-type-pulldown="key" data-flg-pulldown="MTU3NjExMzgzOTkxNV9bZGF0YS1uYW1lPSdzaG9wX25hbWUnXV8w">
         <input type="text" name="data[0][shop_name]" data-name="shop_name" value="" placeholder="購入店舗" autocomplete="off" data-type-pulldown="val" data-flg-pulldown="MTU3NjExMzgzOTkxNV9bZGF0YS1uYW1lPSdzaG9wX25hbWUnXV8w" data-num="0">
       </div>
 
