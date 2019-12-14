@@ -17,6 +17,7 @@ README
 # Version
 - ver 0.1 : 拡縮機能、同値リスト表示、キャッシュ削除、入力値判定
 - ver 0.2 : 回数登録機能、低回数キャッシュ優先削除機能
+- ver 0.3 : 仕様変更 : templateリストを外部型から内包型に変更
 
 # Setting
 - 保存対象項目 : 値を保存する対象項目
@@ -29,6 +30,9 @@ README
 # Issue
 1. name="mode[]"などのような同一name値の対応（selectorで登録することも可能にする）同一form内で検索される
 2. 動的フォームへの対応
+
+# Request
+- localStorageの平文データを暗号化処理
 
 # Introduction
 ```

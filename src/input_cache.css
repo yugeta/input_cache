@@ -72,6 +72,7 @@
   color:#666;
   cursor:pointer;
   margin-right:20px;
+  min-height:20px;
 }
 .input-cache-base .input-cache-lists li .input-cache-data:hover{
   color:#F66;
