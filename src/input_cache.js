@@ -628,8 +628,6 @@
     var ls_data = this.cache_load("data");
     ls_data = (ls_data) ? ls_data : [];
     var flg = false;
-    // 同じデータが存在する場合は、そのデータの日付を変更する
-
     var elements = this.getCache_notEmpty();
     for(var i=0; i<ls_data.length; i++){
       var cnt = 0;
@@ -639,14 +637,17 @@
       }
       if(cnt === elements.length){
         flg = true;
+        ls_cache.count = ls_data[i].count;
+        ls_cache.id    = ls_data[i].id;
+        ls_data.splice(i,1);
         break;
       }
     }
-    if(flg === false){
-      ls_data.push(ls_cache);
-    }
+    
+    ls_cache.count = (typeof ls_cache.count === "undefined") ? 1 : ls_cache.count+1;
+    ls_data.push(ls_cache);
+    
     ls_data = this.cache_max(ls_data);
-    // if(!ls_data){return}
     localStorage.setItem(name_data , JSON.stringify(ls_data));
     localStorage.removeItem(name_cache);
   };
@@ -678,6 +679,10 @@
     if(!datas){return null}
     if(datas.length > this.options.max_cache){
       datas.sort(function(a,b){
+        a.count = (typeof a.count === "undefined") ? 1 : a.count;
+        b.count = (typeof b.count === "undefined") ? 1 : b.count;
+        if( a.count < b.count ) return -1;
+        if( a.count > b.count ) return 1;
         if( a.time < b.time ) return -1;
         if( a.time > b.time ) return 1;
       });
