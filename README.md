@@ -1,51 +1,38 @@
-Input Cache
+Input-cache
 ==
-
 ```
 Author : Yugeta.Koji
 Date   : 2019.12.12
 ```
+README
+- [system](docs/system.md)
+- [sample](sample/index.html)
 
 # Summary
-```
-・WEBページのinput入力フォームの入力値を保存しておいて、繰り返し入力を簡単にさせるツール
-・個人情報保護の観点から、キャッシュされたデータをクリアできるモードも入れる
-```
+- WEBページのinput入力フォームの入力値を保存しておいて、繰り返し入力を簡単にさせるツール
+- 個人情報保護の観点から、キャッシュされたデータをクリアできるモードも入れる
+- 既存サーバーのデータベースを利用しないシステム
+- 使えば使うほど入力が楽になるシステム
+
+# Version
+- ver 0.1 : 拡縮機能、同値リスト表示、キャッシュ削除、入力値判定
 
 # Setting
-```
-保存対象項目 : 値を保存する対象項目
-発動key項目 : array
-max登録件数 : 100 (default)
-起動処理    : function : 起動時のイベント処理
-
-```
-
-# Flow
-1. js読み込み時に各種モジュールを読み込みセット(css等)
-2. データの確認(cacheデータがnullの場合は、取り込み処理を実行※任意)
-3. 対象項目にイベントセット : keyupイベント、blurイベント、任意コマンド、でcacheデータ検索機能を登録
-4. cacheデータ検索機能
-5. cacheデータがある場合にリスト（レコメンド）表示処理
-6. リスト表示をクリックした際の実行処理 : 対象項目に自動入力
-7. 
-
-
+- 保存対象項目 : 値を保存する対象項目
+- 発動key項目 : array
+- Max登録件数 : 100 (default)
+- 起動処理    : function : 起動時のイベント処理
 
 # Howto
-```
-
-```
-
-# Sample
-
-
-
 
 # Issue
-
 1. name="mode[]"などのような同一name値の対応（selectorで登録することも可能にする）同一form内で検索される
 2. 動的フォームへの対応
 
-
-
+# Introduction
+```
+Name : Yugeta.Koji
+Company : MYNT Inc.,
+Blog : https://wordpress.ideacompo.com/
+Mail : yugeta@myntinc.com
+```
