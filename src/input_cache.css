@@ -44,7 +44,7 @@
 
 .input-cache-base .input-cache-header .input-cache-close{
   position:absolute;
-  top:4px;
+  top:0;
   right:0px;
   cursor:pointer;
   margin:0;

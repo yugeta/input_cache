@@ -878,11 +878,11 @@ console.log(datas);
 // console.log(datas.splice(0,this.options.history_count));
 
     // time順にsort
-    // datas.sort(function(a,b){
-    //   if(a.time < b.time){return -1}
-    //   if(a.time > b.time){return 1}
-    //   return 0;
-    // });
+    datas = datas.sort(function(a,b){
+      if(a.time < b.time){return -1}
+      if(a.time > b.time){return 1}
+      return 0;
+    });
     return datas.splice(0,this.options.history_count);
   };
 
