@@ -35,9 +35,7 @@ README
 - localStorageの平文データを暗号化処理
 
 # Introduction
-```
-Name : Yugeta.Koji
-Company : MYNT Inc.,
-Blog : https://wordpress.ideacompo.com/
-Mail : yugeta@myntinc.com
-```
+- Name : Yugeta.Koji
+- Company : MYNT Inc.,: http://myntinc.com
+- Blog :  https://wordpress.ideacompo.com/
+- Mail : yugeta@myntinc.com
