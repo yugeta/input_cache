@@ -694,8 +694,8 @@
       datas.sort(function(a,b){
         a.count = (typeof a.count === "undefined") ? 1 : a.count;
         b.count = (typeof b.count === "undefined") ? 1 : b.count;
-        if( a.count < b.count ) return -1;
-        if( a.count > b.count ) return 1;
+        // if( a.count < b.count ) return -1;
+        // if( a.count > b.count ) return 1;
         if( a.time < b.time ) return -1;
         if( a.time > b.time ) return 1;
       });
@@ -865,7 +865,7 @@
     // 直近リストを取得
     var datas = this.cache_history();
     if(!datas || !datas.length){return;}
-console.log(datas);
+// console.log(datas);
     this.viewLists(datas);
   };
   MAIN.prototype.cache_history = function(){
